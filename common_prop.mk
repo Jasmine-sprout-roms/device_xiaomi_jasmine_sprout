@@ -299,6 +299,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.gpu_comp_tiling=1 \
     debug.sf.recomputecrop=0
 
+# Seamless transfer
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.fflag.override.settings_seamless_transfer=true
+
 # Sensor
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sdk.sensors.gestures=false \
