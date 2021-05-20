@@ -32,6 +32,9 @@ TARGET_HW_DISK_ENCRYPTION := true
 # DT2W
 TARGET_TAP_TO_WAKE_NODE := "/sys/touchpanel/double_tap"
 
+# Bootanimation
+TARGET_BOOTANIMATION_HALF_RES := true
+
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/xiaomi/sdm660
 TARGET_KERNEL_CONFIG := wayne_defconfig
