@@ -267,14 +267,15 @@ vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc|c966350ee67d3a7
 vendor/lib64/hw/vendor.qti.hardware.qteeconnector@1.0-impl.so|ec2e5f46b1468ca9f88ae938375fb7249b499963
 vendor/lib64/vendor.qti.hardware.qteeconnector@1.0.so|50ee00e9ecf66258efbc544492982af16b5c91d6
 
-# DRM (Widevine) - from curtana V12.0.1.7.RJWMIXM
-vendor/bin/hw/android.hardware.drm@1.3-service.widevine|07ac13a602f25788e54c1500c2957f561dd9f90a
+# DRM (Widevine) - from ginkgo RKQ1.201004.002
+vendor/bin/hw/android.hardware.drm@1.3-service.widevine|75103a18355966370895526dc9afb6adff4b755b
 vendor/etc/init/android.hardware.drm@1.3-service.widevine.rc|c35e1a6f9a6faff19064a81e07c4be82ceaf4bb5
-vendor/lib/mediadrm/libwvdrmengine.so|1f62a9852e5d211889136fc038bafe5a825622e3
-vendor/lib64/libcpion.so|3534076c3e301914b1e99f670de86820f4ff57ad
-vendor/lib64/libhdcpsrm.so|1e73fe64796baa131d4de7bd2bae3c164e861f35
-vendor/lib64/libwvhidl.so|eb7e90cec72946f7bda1ea3a589d9b3867a3f6a7
-vendor/lib64/mediadrm/libwvdrmengine.so|df3dd313abe03b664ffbb91bf14c0a421c0747d3
+-vendor/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml|ebebcf8f367641480cf7d512fc06e6ab777527be
+vendor/lib64/libbase64.so|caba4e42499d8e53e80c5e05313a36058ae5123e
+vendor/lib64/libcpion.so|afa44f5941a880a4d304dfac4b5d175762b20539
+vendor/lib64/librmp.so|176aed768090f0c8b48cb6ad9e397b35f128b2a5
+vendor/lib64/libwvhidl.so|fb8088d4a47b7a3918c798c58e1636c10bce3427
+vendor/lib64/mediadrm/libwvdrmengine.so|1c09274f43d0028a8ef56b35013b5768aae62c6d
 
 # DRM (TUI) - from LA.UM.8.2.1.r1-05600-sdm660
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti|d4d025e0a12af87f65104fe07801517938733603
