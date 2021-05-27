@@ -408,7 +408,6 @@ vendor/lib64/hw/vulkan.sdm660.so|7c00b59626361d0a81d0f222f93c08198bd5cc64
 vendor/bin/msm_irqbalance|bcc114819bd50bfbefe2dfcb9f815f9959cdad44
 
 # Listen - from LA.UM.8.2.1.r1-05600-sdm660
-vendor/lib/hw/sound_trigger.primary.sdm660.so|f623b7055ead3bfa2139c30a0f2b2cf721411e0b
 vendor/lib/libadpcmdec.so|8c72aa1812bfa749f266020366894c8a3873d99c
 vendor/lib/libgcs-calwrapper.so|cbf3dbe43161b68adfaf48a9da4e7fedd7b02f5a
 vendor/lib/libgcs-ipc.so|b125f360381aa8c7ebdff04585520770ee0c8902
