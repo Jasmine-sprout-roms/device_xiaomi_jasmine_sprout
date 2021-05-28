@@ -25,20 +25,16 @@
 $(call inherit-product, device/xiaomi/jasmine_sprout/device.mk)
 
 # Inherit LegionOS product configuration
-$(call inherit-product, vendor/legion/config/common_full_phone.mk)
-
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
+TARGET_INCLUDE_STOCK_ARCORE := true
+TARGET_INCLUDE_LIVE_WALLPAPERS := false
+TARGET_FACE_UNLOCK_SUPPORTED := true
 # Define first api level
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# LegionOS Device Maintainers
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.maintainer.name=Immanuel_Raj
-
 #Boot Animation Resolution
 TARGET_BOOT_ANIMATION_RES := 1080
-
-#Play bold Play wild
-LEGION_BUILD_TYPE := OFFICIAL
 
 #Gapps Architecture
 TARGET_GAPPS_ARCH := arm64
@@ -49,6 +45,6 @@ TARGET_SCREEN_DENSITY := 480
 # Device identifier
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_NAME := legion_jasmine_sprout
+PRODUCT_NAME := aosp_jasmine_sprout
 PRODUCT_DEVICE := jasmine_sprout
 PRODUCT_MODEL := Mi A2
