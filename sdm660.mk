@@ -99,7 +99,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.soundtrigger@2.1-impl:32 \
     audio.a2dp.default \
-		audio_amplifier.sdm660 \
+    audio_amplifier.sdm660 \
     audio.r_submix.default \
     audio.usb.default \
     liba2dpoffload \
@@ -201,6 +201,10 @@ PRODUCT_PACKAGES += \
 
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk )
+
+# Media
+PRODUCT_PACKAGES += \
+    android.hardware.media.omx@1.0-impl
 
 # Display
 PRODUCT_PACKAGES += \
@@ -389,6 +393,7 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libhypv_intercept \
     libmm-omxcore \
+    libOmxSwVencHevc \
     libOmxCore \
     libOmxAacEnc \
     libOmxAmrEnc \
