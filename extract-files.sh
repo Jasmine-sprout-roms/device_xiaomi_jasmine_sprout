@@ -2,54 +2,35 @@
 #
 # Copyright (C) 2018 The LineageOS Project
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# SPDX-License-Identifier: Apache-2.0
 #
 
 set -e
 
-DEVICE_COMMON=sdm660-common
+DEVICE=jasmine_sprout
 VENDOR=xiaomi
 
 # Load extract_utils and do some sanity checks
-COMMON_DIR="${BASH_SOURCE%/*}"
-if [[ ! -d "$COMMON_DIR" ]]; then COMMON_DIR="$PWD"; fi
+MY_DIR="${BASH_SOURCE%/*}"
+if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-if [[ -z "$DEVICE_DIR" ]]; then
-    DEVICE_DIR="${COMMON_DIR}/../${DEVICE}"
-fi
+ANDROID_ROOT="${MY_DIR}/../../.."
 
-ROOT="$COMMON_DIR"/../../..
-
-HELPER="$ROOT"/vendor/carbon/build/tools/extract_utils.sh
-if [ ! -f "$HELPER" ]; then
-    echo "Unable to find helper script at $HELPER"
+HELPER="${ANDROID_ROOT}/tools/extract-utils/extract_utils.sh"
+if [ ! -f "${HELPER}" ]; then
+    echo "Unable to find helper script at ${HELPER}"
     exit 1
 fi
-. "$HELPER"
+source "${HELPER}"
 
 # Default to sanitizing the vendor folder before extraction
 CLEAN_VENDOR=true
-ONLY_COMMON=false
-ONLY_DEVICE=false
+
+KANG=
+SECTION=
 
 while [ "${#}" -gt 0 ]; do
     case "${1}" in
-        -o | --only-common )
-                ONLY_COMMON=true
-                ;;
-        -d | --only-device )
-                ONLY_DEVICE=true
-                ;;
         -n | --no-cleanup )
                 CLEAN_VENDOR=false
                 ;;
@@ -67,8 +48,8 @@ while [ "${#}" -gt 0 ]; do
     shift
 done
 
-if [ -z "$SRC" ]; then
-    SRC=adb
+if [ -z "${SRC}" ]; then
+    SRC="adb"
 fi
 
 function blob_fixup() {
@@ -101,19 +82,13 @@ function blob_fixup() {
     esac
 }
 
-# Initialize the common helper
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$ROOT" true $CLEAN_VENDOR
+# Initialize the helper
+setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
 
-if [[ "$ONLY_DEVICE" = "false" ]] && [[ -s "${COMMON_DIR}"/proprietary-files.txt ]]; then
-    extract "$COMMON_DIR"/proprietary-files.txt "$SRC" "${KANG}" --section "${SECTION}"
-fi
-if [[ "$ONLY_COMMON" = "false" ]] && [[ -s "${DEVICE_DIR}"/proprietary-files.txt ]]; then
-    if [[ ! "$IS_COMMON" = "true" ]]; then
-        IS_COMMON=false
-    fi
-    # Reinitialize the helper for device
-    setup_vendor "$DEVICE" "$VENDOR" "$ROOT" "$IS_COMMON" "$CLEAN_VENDOR"
-    extract "${DEVICE_DIR}"/proprietary-files.txt "$SRC" "${KANG}" --section "${SECTION}"
-fi
+extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTION}"
 
-"$COMMON_DIR"/setup-makefiles.sh
+DEVICE_BLOB_ROOT="$ANDROID_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
+
+sed -i 's|/system/etc/firmware|/vendor/firmware\x0\x0\x0\x0|g' "$DEVICE_BLOB_ROOT"/vendor/lib64/libgf_ca.so
+
+"${MY_DIR}/setup-makefiles.sh"

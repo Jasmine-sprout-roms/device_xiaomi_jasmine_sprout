@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- #
 #
-# Copyright (C) 2019 The Xiaomi-SDM660 Project
+# Copyright (C) 2018 The Xiaomi-SDM660 Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,12 +20,32 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 #
--->
 
-<resources>
+# Inherit device configuration
+$(call inherit-product, device/xiaomi/jasmine_sprout/device.mk)
 
-    <!-- Default radius of the software rounded corners. -->
-    <dimen name="rounded_corner_radius">40.0px</dimen>
-    <dimen name="status_bar_height_portrait">28.0dip</dimen>
+# Inherit LegionOS product configuration
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
+TARGET_INCLUDE_STOCK_ARCORE := true
+TARGET_INCLUDE_LIVE_WALLPAPERS := false
+TARGET_FACE_UNLOCK_SUPPORTED := true
 
-</resources>
+# Define first api level
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
+
+#Boot Animation Resolution
+TARGET_BOOT_ANIMATION_RES := 1080
+
+#Gapps Architecture
+TARGET_GAPPS_ARCH := arm64
+
+# Density
+TARGET_SCREEN_DENSITY := 480
+
+# Device identifier
+PRODUCT_BRAND := Xiaomi
+PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_NAME := aosp_jasmine_sprout
+PRODUCT_DEVICE := jasmine_sprout
+PRODUCT_MODEL := Mi A2

@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- #
 #
-# Copyright (C) 2019 The Xiaomi-SDM660 Project
+# Copyright (C) 2018 The Xiaomi-SDM660 Project
+# Copyright (C) 2018-2020 Project-LegionOS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,12 +21,12 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 #
--->
 
-<resources>
+# Inherit MI A2 LegionOS device config
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/aosp_jasmine_sprout.mk
 
-    <!-- Default radius of the software rounded corners. -->
-    <dimen name="rounded_corner_radius">40.0px</dimen>
-    <dimen name="status_bar_height_portrait">28.0dip</dimen>
-
-</resources>
+COMMON_LUNCH_CHOICES := \
+    aosp_jasmine_sprout-eng \
+    aosp_jasmine_sprout-userdebug \
+	aosp_jasmine_sprout-eng
