@@ -271,3 +271,12 @@ service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
 on property:persist.sys.device_provisioned=1
     setprop dalvik.vm.dex2oat-cpu-set 0,1,2,3,4,5,6,7
     setprop dalvik.vm.dex2oat-threads 8
+
+on property:init.svc.cnss_diag=running
+    stop cnss_diag
+
+on property:init.svc.tcpdump=running
+    stop tcpdump
+
+on property:init.svc.vendor.ipacm-diag=running
+    stop vendor.ipacm-diag
