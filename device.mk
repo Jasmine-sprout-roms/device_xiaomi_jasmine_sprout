@@ -411,6 +411,12 @@ DEVICE_PACKAGE_OVERLAYS += \
 # RRO configuration
 TARGET_USES_RRO := true
 
+# Dexpreopt
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    Launcher3QuickStep \
+    Settings \
+    SystemUI
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
@@ -460,9 +466,6 @@ PRODUCT_PACKAGES += \
 
     PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/power-libperfmgr/sdm660_powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
-
-# Preopt SystemUI
-PRODUCT_DEXPREOPT_SPEED_APPS += SystemUI
 
 # Protobuf
 PRODUCT_PACKAGES += \
