@@ -160,7 +160,7 @@ BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_VERSION := 4.19
 TARGET_KERNEL_SOURCE := kernel/xiaomi/jasmine_sprout
-TARGET_KERNEL_CONFIG := jasmine_sprout_defconfig
+TARGET_KERNEL_CONFIG := wayne_defconfig
 
 # Enable stats logging in LMKD
 TARGET_LMKD_STATS_LOG := true
